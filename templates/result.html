@@ -1,0 +1,15 @@
+<!doctype html>
+<p>
+  <table border = 1>
+    {% for list1_time in result %}
+    <tr>
+        时间戳:<tr>{{ list1_time.timeline }}<tr>
+        值:<tr>{{ list1_time.value }}</tr>
+        异常判定:<tr>{{ list1_time.iswrong}}<tr>
+    </tr>
+    {% endfor %}
+      <p>
+<form action="http://localhost:5000/main"“ method="POST">
+     <p><input type = "submit" value = "delite" /></p>
+  </form>
+</table>
