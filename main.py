@@ -45,10 +45,25 @@ def __init__(self, timeline, value, iswrong):
 def result():
    if request.method == 'POST':
       if request.form['chose']=="list1" :
-         times=( list1_time.query.filter_by(timeline = request.form['time']).all())
+         times=( list1_time.query.filter( list1_time.timeline >=request.form['start'] , list1_time.timeline <= request.form['end'] ).all())
       else:
-         times=( list2_time.query.filter_by(timeline= request.form['time']).all())
-   return render_template("result.html",result = times)
+         times=( list2_time.query.filter( list2_time.timeline >=request.form['start'] , list2_time.timeline <= request.form['end'] ).all())
+   return render_template("result.html",result = times,list=request.form['chose'])
+#删除
+@app.route('/delete/<list>/<timeline>')
+def delete(list,timeline):
+   if list=="list1":
+      times = list1_time.query.filter(timeline == timeline).first()
+      db.session.delete(times)
+      db.session.commit()
+   elif list=="list2":
+      times = list2_time.query.filter(timeline == timeline).first()
+      db.session.delete(times)
+      db.session.commit()
+   return render_template('delete.html')
+
+
+
 
 ##绘图
 
@@ -60,6 +75,7 @@ def plot():
       else:
          times=( list2_time.query.filter( list2_time.timeline >=request.form['start'] , list2_time.timeline <= request.form['end'] ).all())
    result = []
+   iswrong=[]
    for x in times:
       result.append(x.value)
    return render_template("plot.html",result=result,length=len(result))
