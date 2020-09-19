@@ -1,0 +1,21 @@
+时间序列展示
+<form action="http://localhost:5000/result"“ method="POST">
+    <p>start time: <input type = "int" name = "start" />
+      end time:  <input type = "int" name = "end" />
+    <span class="font02">  数据源: </span>
+    <select Name = "chose">
+        <option value="list1">列表1</option>
+        <option value="list2">列表5</option>
+    </select>
+     <p><input type = "submit" value = "查询" /></p>
+  </form>
+  <form action="http://localhost:5000/plot"“ method="POST">
+     <p>start time: <input type = "int" name = "start" />
+      end time:  <input type = "int" name = "end" />
+         <span class="font01">  数据源: </span>
+      <select Name = "chose">
+        <option value="list1">列表1</option>
+        <option value="list2">列表5</option>
+    </select><p>
+      <input type = "submit" value = "submit" /></p>
+  </form>

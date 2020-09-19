@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>时间序列页面展示</title>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+<div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() {
+   var title = {
+       text: '系统运维关键数据展示{{result.length}}'
+   };
+   var x=new Array();
+   {for (var i=0;i<length;i++)
+{
+    x[i]=i+1;
+}}
+   var xAxis = {
+       categories: {x}
+   };
+   var yAxis = {
+      title: {
+         text: 'value'
+      },
+      plotLines: [{
+         value: 0,
+         width: 1,
+         color: '#808080'
+      }]
+   };
+
+   var tooltip = {
+      valueSuffix: '\xB0C'
+   }
+
+   var legend = {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+   };
+   var series =  [
+      {
+         name: '列表',
+         data: {{result}}
+      }
+   ];
+
+   var json = {};
+
+   json.title = title;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.tooltip = tooltip;
+   json.legend = legend;
+   json.series = series;
+
+   $('#container').highcharts(json);
+});
+
+</script>
+</body>
+</html>
