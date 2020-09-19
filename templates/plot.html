@@ -13,7 +13,7 @@ $(document).ready(function() {
        text: '系统运维关键数据展示{{result.length}}'
    };
    var x=new Array();
-   {for (var i=0;i<12;i++)
+   {for (var i=0;i<length;i++)
 {
     x[i]=i+1;
 }}
@@ -41,7 +41,6 @@ $(document).ready(function() {
       verticalAlign: 'middle',
       borderWidth: 0
    };
-
    var series =  [
       {
          name: '列表',

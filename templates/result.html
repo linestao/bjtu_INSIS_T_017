@@ -6,10 +6,10 @@
         时间戳:<tr>{{ list1_time.timeline }}<tr>
         值:<tr>{{ list1_time.value }}</tr>
         异常判定:<tr>{{ list1_time.iswrong}}<tr>
+      <p><form action="http://localhost:5000/delete/{{list}}/{{list1_time.timeline}}">
+     <p><input type = "submit" value = "delite" /></p>
+  </form><p>
     </tr>
     {% endfor %}
       <p>
-<form action="http://localhost:5000/main"“ method="POST">
-     <p><input type = "submit" value = "delite" /></p>
-  </form>
 </table>
